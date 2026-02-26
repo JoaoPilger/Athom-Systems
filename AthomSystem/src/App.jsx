@@ -1,10 +1,7 @@
-import { useState } from 'react'
-import './App.css'
+import ProductsCarousel from './components/produtos/produtos';
 
 function App() {
-  return(
-    <div></div>
-  )
+  return <ProductsCarousel />;
 }
 
-export default App
+export default App;
