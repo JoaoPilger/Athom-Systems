@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap');
 
+/* Carrossel de produtos - Estilos principais */
 *, *::before, *::after { box-sizing: border-box; }
 
 .products {
@@ -8,7 +9,6 @@
   overflow: hidden;
 }
 
-/* ── Section ── */
 .products-section {
   font-family: 'DM Sans', sans-serif;
   background: linear-gradient(165deg, #f0f7ff 0%, #e5f1fc 35%, #ecf4fd 70%, #f5f9ff 100%);
@@ -23,7 +23,6 @@
   overflow: hidden;
 }
 
-/* Blobs (original) */
 .products-section::before {
   content: '';
   position: absolute;
@@ -43,7 +42,6 @@
   z-index: 0;
 }
 
-/* Canvas particles */
 .products-canvas {
   position: absolute;
   inset: 0;
@@ -52,7 +50,6 @@
   z-index: 0;
 }
 
-/* Tech grid */
 .products-tech-bg {
   position: absolute;
   inset: 0;
@@ -92,7 +89,7 @@
   z-index: 1;
 }
 
-/* ── Title ── */
+/* Título e carrossel */
 .products-title {
   font-family: 'Sora', sans-serif;
   font-size: 2.4rem;
@@ -121,7 +118,6 @@
 }
 @keyframes line-grow { to { width: 72px; } }
 
-/* ── Carousel ── */
 .carousel-wrapper {
   display: flex;
   align-items: center;
@@ -132,7 +128,6 @@
   z-index: 1;
 }
 
-/* ── Nav Buttons ── */
 .products .nav-btn {
   width: 52px; height: 52px;
   border-radius: 50%;
@@ -170,7 +165,6 @@
 .products .nav-btn:active { transform: scale(0.96); }
 .products .nav-btn svg { width: 20px; height: 20px; }
 
-/* ── Cards Viewport ── */
 .products .cards-viewport {
   display: flex;
   gap: 28px;
@@ -180,7 +174,6 @@
   perspective: 1400px;
 }
 
-/* ── Card Base ── */
 .products .card {
   background: rgba(255,255,255,0.92);
   backdrop-filter: blur(16px);
@@ -207,7 +200,6 @@
   transform-style: preserve-3d;
 }
 
-/* Gloss */
 .products .card::before {
   content: '';
   position: absolute;
@@ -217,7 +209,6 @@
   border-radius: 24px;
 }
 
-/* Shimmer sweep on hover */
 .products .card::after {
   content: '';
   position: absolute;
@@ -237,7 +228,6 @@
   to   { left: 140%; opacity: 0.6; }
 }
 
-/* ── Active ── */
 .products .card.active {
   transform: translateY(-12px) scale(1.05);
   box-shadow:
@@ -247,13 +237,11 @@
   z-index: 2;
 }
 
-/* ── Side ── */
 .products .card.side { transform: scale(0.9) translateY(8px); opacity: 0.6; }
 .products .card.side-left  { transform: scale(0.9) translateY(8px) translateX(-4px); }
 .products .card.side-right { transform: scale(0.9) translateY(8px) translateX(4px); }
 .products .card.side:hover { opacity: 0.85; }
 
-/* ── Card Icon ── */
 .products .card-icon {
   width: 110px; height: 110px;
   margin-bottom: 16px;
@@ -265,7 +253,6 @@
   filter: drop-shadow(0 10px 30px rgba(59,130,246,0.3));
 }
 
-/* ── Card Text ── */
 .products .card-name {
   font-family: 'Sora', sans-serif;
   font-size: 1.45rem;
@@ -285,7 +272,6 @@
   font-weight: 400;
 }
 
-/* ── Status ── */
 .products .card-status {
   display: inline-flex;
   align-items: center;
@@ -321,7 +307,6 @@
   font-weight: 400;
 }
 
-/* Reveal tags on hover (active card) */
 .products .card-tags {
   display: flex;
   gap: 6px;
@@ -355,7 +340,6 @@
   to   { transform: scale(1); opacity: 1; }
 }
 
-/* ── Dots ── */
 .products .dots {
   display: flex;
   gap: 10px;
@@ -380,7 +364,6 @@
   box-shadow: 0 0 10px rgba(59,130,246,0.4);
 }
 
-/* ── More Link ── */
 .products .more-link {
   margin-top: 20px;
   font-family: 'Sora', sans-serif;
@@ -407,7 +390,7 @@
 .products .more-link:hover { letter-spacing: 0.03em; }
 .products .more-link:hover::after { width: 100%; }
 
-/* ── Responsive ── */
+/* Layout responsivo */
 @media (max-width: 768px) {
   .products-title { font-size: 2.2rem; margin-bottom: 40px; }
   .carousel-wrapper { gap: 16px; max-width: 100%; }

@@ -104,7 +104,7 @@ const PRODUCTS = [
 
 import './produtos.css';
 
-/* ═══════════════ Particle Canvas ═══════════════ */
+/* Canvas de partículas conectadas no fundo */
 function useParticleCanvas(canvasRef, sectionRef) {
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -145,13 +145,11 @@ function useParticleCanvas(canvasRef, sectionRef) {
     const draw = () => {
       ctx.clearRect(0, 0, W, H);
 
-      // Update
       for (const p of particles) {
         p.x += p.vx; p.y += p.vy;
         if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
         if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
 
-        // Mouse repel (gentle)
         const dx = p.x - mouse.x, dy = p.y - mouse.y;
         const dist = Math.sqrt(dx*dx + dy*dy);
         if (dist < MOUSE_DIST) {
@@ -160,17 +158,14 @@ function useParticleCanvas(canvasRef, sectionRef) {
           p.vy += (dy / dist) * force * 0.08;
         }
 
-        // Damping
         p.vx *= 0.995; p.vy *= 0.995;
 
-        // Draw dot
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(59,130,246,${p.alpha})`;
         ctx.fill();
       }
 
-      // Connect lines between close particles
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const a = particles[i], b = particles[j];
@@ -186,7 +181,6 @@ function useParticleCanvas(canvasRef, sectionRef) {
             ctx.stroke();
           }
         }
-        // Mouse connection
         const p = particles[i];
         const dx = p.x - mouse.x, dy = p.y - mouse.y;
         const d = Math.sqrt(dx*dx + dy*dy);
@@ -213,7 +207,7 @@ function useParticleCanvas(canvasRef, sectionRef) {
   }, [canvasRef, sectionRef]);
 }
 
-/* ═══════════════ Tilt Card ═══════════════ */
+/* Card com inclinação 3D ao passar o mouse */
 function TiltCard({ children, active, className, onClick }) {
   const ref = useRef(null);
   const raf = useRef();
@@ -259,7 +253,7 @@ function TiltCard({ children, active, className, onClick }) {
   );
 }
 
-/* ═══════════════ Ripple Button ═══════════════ */
+/* Botão com efeito ripple no clique */
 function RippleBtn({ onClick, children, ...rest }) {
   const handleClick = (e) => {
     const btn = e.currentTarget;
@@ -275,7 +269,7 @@ function RippleBtn({ onClick, children, ...rest }) {
   return <button {...rest} onClick={handleClick}>{children}</button>;
 }
 
-/* ═══════════════ Main Component ═══════════════ */
+/* Componente principal - Carrossel de produtos */
 export default function ProductsCarousel() {
   const [activeIndex, setActiveIndex] = useState(1);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -308,8 +302,7 @@ export default function ProductsCarousel() {
     <div className="products">
 
       <section className="products-section" ref={sectionRef}>
-        {/* Particle canvas */}
-        <canvas className="products-canvas" ref={canvasRef} />
+        <canvas className="products-canvas" ref={canvasRef} aria-hidden="true" />
 
         <div className="products-tech-bg" aria-hidden="true">
           <span className="products-tech-line" />
@@ -350,7 +343,6 @@ export default function ProductsCarousel() {
                   {product.badge && (
                     <div className="card-badge">{product.badge}</div>
                   )}
-                  {/* Tags — revealed on hover of active card */}
                   {isActive && product.tags && (
                     <div className="card-tags">
                       {product.tags.map(t => (
