@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import './App.css'
+import Valores from './valores/valores' 
 
 function App() {
   return(
-    <div></div>
+    <Valores></Valores>
   )
 }
 
