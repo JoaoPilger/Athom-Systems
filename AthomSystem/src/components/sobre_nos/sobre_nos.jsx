@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, {useRef } from "react";
 import "./sobre_nos.css";
+import { Link } from "react-router-dom";
 
 const SobreNos = () => {
   const sectionRef = useRef(null);
@@ -22,7 +23,7 @@ const SobreNos = () => {
           <strong>resultados</strong> através da <strong>tecnologia certa</strong>.
         </p>
 
-        <a href="#" className="sobre-nos_botao">
+        <a href="/pages/quem_somos" className="sobre-nos_botao" target="_blank">
           Conheça a Athom System
         </a>
       </div>
