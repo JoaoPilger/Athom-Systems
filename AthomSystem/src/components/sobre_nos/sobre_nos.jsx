@@ -3,25 +3,7 @@ import "./sobre_nos.css";
 
 const SobreNos = () => {
   const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-
-    const elements = sectionRef.current?.querySelectorAll(".animate");
-    elements?.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
+  
   return (
     <section className="sobre-nos" ref={sectionRef}>
       <div className="sobre-nos_container">
