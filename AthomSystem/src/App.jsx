@@ -1,9 +1,15 @@
 import { useState } from 'react'
-import Valores from './valores/valores' 
+import Produtos from './components/produtos/produtos'
+import Valores from './components/valores/valores' 
+import SobreNos from './components/sobre_nos/sobre_nos';
 
 function App() {
   return(
-    <Valores></Valores>
+    <>
+      <Valores/>
+      <Produtos/>
+      <SobreNos/>
+    </>
   )
 }
 

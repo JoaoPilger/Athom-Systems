@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Gantari:wght@400;600;700&display=swap");
+
+.sobre-nos {
+  background-color: #ffffff;
+  padding: 80px 24px;
+  font-family: "Gantari", sans-serif;
+}
+
+.sobre-nos_container {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.sobre-nos_titulo {
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.sobre-nos_texto {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #333333;
+  margin: 0;
+}
+
+
+.sobre-nos_botao {
+  display: inline-block;
+  background-color: #2e6db4;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 400;
+  text-decoration: none;
+  padding: 16px 48px;
+  border-radius: 4px;
+  margin-top: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.sobre-nos_botao:hover {
+  background-color: #245a96;
+}
+
+
+/* ---------- Responsividade ---------- */
+@media (max-width: 768px) {
+  .sobre-nos {
+    padding: 60px 20px;
+  }
+
+  .sobre-nos_titulo{
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sobre-nos_botao {
+    width: auto;
+    text-align: center;
+  }
+}
