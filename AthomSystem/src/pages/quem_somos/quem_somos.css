@@ -9,8 +9,10 @@
     font-size: 1vw;
 }
 
+/* SEÇÃO CARDS VALORES DA EMPRESA */
 .card_qs{
     color: black;
+    font-size: 17px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -25,9 +27,82 @@
         width: 60%;
     }
 
+/* SEÇÃO MEMBROS DA EQUIPE */
+
+.carousel_wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 1rem 2rem;
+    gap: 2.5rem;
+}   
+
+.carousel_titulo {
+    font-size: 2.7rem;
+    text-align: center;
+}
+
+.carousel_stage {
+    position: relative;
+    width: 100%;
+    max-width: 780px;
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel_card {
+    position: absolute;
+    width: 320px;
+    background: #f0eeea;
+    border-radius: 2px;
+    overflow: hidden; 
+    cursor: pointer;
+    display: flex;
+    flex-direction: column; 
+}
+
+.card_foto {
+    width: 100%;
+    aspect-ratio: 1 / 1;   
+    overflow: hidden;
+}
+
+.card_foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top; 
+  display: block;
+}
+
+.card_carousel_body {
+  padding: 1.4rem 1.6rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.card_member_nome {
+  font-weight: 400;
+  font-size: 1.35rem;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.card_member_descricao {
+  font-size: 0.82rem;
+  font-weight: 300;
+  line-height: 1.65;
+  color: #5c5a56;
+  margin: 0;
+}
+
 @media (max-width: 768px) {
     .quem_somos{
-        flex-direction: column;
+        flex-direction: row;
         gap: 20px;
         padding: 20px;
     }
@@ -35,9 +110,22 @@
         width: 80%;
         height: auto;
         padding: 20px;
+        font-size: 17px;
     }
     .card_qs img{
         width: 40%;
+    }
+
+    .carousel_stage {
+        height: 480px;
+    }
+
+    .carousel_card {
+        width: min(280px, 75vw);
+    }
+
+    .card_member_nome {
+        font-size: 1.15rem;
     }
 }
 
@@ -47,8 +135,41 @@
     }
     .card_qs{
         padding: 10px;
+        font-size: 10px;
     }
     .card_qs img{
         width: 30%;
+    }
+    .carousel_wrapper {
+        padding: 2.5rem 0 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .carousel_titulo {
+        font-size: 1.5rem;
+    }
+
+    .carousel_stage {
+        height: 420px;
+    }
+
+    .carousel_card {
+        width: min(240px, 70vw);
+    }
+    .carousel_card[style*="translateX(-96%)"],
+    .carousel_card[style*="translateX(96%)"] {
+        display: none;
+    }
+
+    .card_carousel_body {
+        padding: 1rem 1.2rem 1.4rem;
+    }
+
+    .card_member_nome {
+        font-size: 1rem;
+    }
+
+    .card_member_descricao {
+        font-size: 0.78rem;
     }
 }
