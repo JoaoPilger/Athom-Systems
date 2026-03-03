@@ -1,34 +1,204 @@
-import { useState, useEffect} from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './quem_somos.css';
+
+const Nav = () => {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const handler = () => setScrolled(window.scrollY > 30);
+    window.addEventListener("scroll", handler);
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+  return (
+    <nav className={`nav ${scrolled ? "nav--scrolled" : ""}`}>
+      <a href="#" className="nav__logo">
+        <img src="/logo.png" alt="Athom Systems" />
+      </a>
+      <ul className="nav__links">
+        <li><a href="#sobre">Quem somos</a></li>
+        <li className="nav__dropdown">
+          <a href="#produtos">Produtos <span>›</span></a>
+        </li>
+        <li><a href="#contato" className="nav__cta">Contato</a></li>
+      </ul>
+    </nav>
+  );
+};
+
+const Particles = () => {
+  const canvasRef = useRef(null);
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    let raf;
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resize();
+    window.addEventListener("resize", resize);
+    const dots = Array.from({ length: 120 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2.5 + 1,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      alpha: Math.random() * 0.5 + 0.2,
+    }));
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      dots.forEach((d) => {
+        d.x += d.vx;
+        d.y += d.vy;
+        if (d.x < 0 || d.x > canvas.width) d.vx *= -1;
+        if (d.y < 0 || d.y > canvas.height) d.vy *= -1;
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(70, 130, 200, ${d.alpha})`;
+        ctx.fill();
+      });
+      raf = requestAnimationFrame(draw);
+    };
+    draw();
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+  return <canvas className="particles" ref={canvasRef} />;
+};
+
+const Hero = () => (
+  <section className="hero">
+    <Particles />
+    <div className="hero__content">
+      <h1 className="hero__title">Athom Systems</h1>
+      <p className="hero__subtitle">O NÚCLEO DA SUA INOVAÇÃO.</p>
+      <p className="hero__body">
+        Somos uma equipe de profissionais dedicados a{" "}
+        <strong>transformar ideias em soluções tecnológicas de alto impacto</strong>.
+        Com expertise técnica e foco em <strong>resultados</strong>, desenvolvemos
+        software que une <strong>eficiência, confiabilidade e inovação</strong>.
+        Entendemos que cada negócio tem desafios únicos, por isso trabalhamos de
+        forma <strong>próxima e comprometida</strong> com cada cliente, porque para
+        nós, cada projeto importa e cada entrega precisa ser <strong>excelente</strong>.
+      </p>
+      <a href="#pmv" className="hero__link">A opção certa para você ↓</a>
+    </div>
+  </section>
+);
+
+const cards = [
+  {
+    title: "Propósito",
+    text: "Existimos para transformar a forma como empresas utilizam a tecnologia. Acreditamos que soluções bem desenvolvidas geram impacto real, duradouro e constroem um futuro mais eficiente para os negócios.",
+    delay: 0,
+  },
+  {
+    title: "Missão",
+    text: "Nossa missão é desenvolver software de alta qualidade que simplifique processos e impulsione resultados. Trabalhamos com rigor técnico e dedicação para superar as expectativas dos nossos clientes em cada projeto.",
+    delay: 100,
+  },
+  {
+    title: "Valores",
+    text: "Inovação, confiabilidade e compromisso guiam cada decisão que tomamos. Acreditamos que tecnologia séria, aliada a uma equipe comprometida, é o que realmente faz a diferença para os nossos clientes.",
+    delay: 200,
+  },
+];
+
+const PMV = () => {
+  const sectionRef = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) setVisible(true); },
+      { threshold: 0.2 }
+    );
+    if (sectionRef.current) obs.observe(sectionRef.current);
+    return () => obs.disconnect();
+  }, []);
+
+  return (
+    <section className="pmv" id="pmv" ref={sectionRef}>
+      <div className="pmv__header">
+        <h2 className="pmv__heading">Propósito, Missão e Valores</h2>
+        <p className="pmv__subheading">
+          Apoiamos quantitativamente a tomada de decisões em casos reais na cadeia de suprimentos.
+        </p>
+      </div>
+      <div className="pmv__grid">
+        {cards.map((card, i) => (
+          <article
+            key={i}
+            className={`pmv__card ${visible ? "pmv__card--visible" : ""}`}
+            style={{ animationDelay: `${card.delay}ms` }}
+          >
+            <div className="pmv__card-image" aria-hidden="true">
+              <div className="pmv__card-dots">
+                {Array.from({ length: 30 }).map((_, j) => (
+                  <span
+                    key={j}
+                    className="pmv__dot"
+                    style={{
+                      top: `${Math.random() * 100}%`,
+                      left: `${Math.random() * 100}%`,
+                      width: `${Math.random() * 4 + 2}px`,
+                      height: `${Math.random() * 4 + 2}px`,
+                      opacity: Math.random() * 0.6 + 0.2,
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+            <div className="pmv__card-body">
+              <h3 className="pmv__card-title">{card.title}</h3>
+              <p className="pmv__card-text">{card.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+function App() {
+  return (
+    <div className="app">
+      <Nav />
+      <Hero />
+      <PMV />
+    </div>
+  );
+}
+
 
 const members = [
   {
     nome: "Murilo Jochkeck",
-    foto: "/public/teste.jpg",
+    foto: "/public/murilo.png",
     descricao:
       "Lindo, tesão, bonito e gostosão",
   },
   {
     nome: "João Pilger",
-    foto: "/public/pilger.jpg",
+    foto: "/public/pilger.png",
     descricao:
       "Gay",
   },
   {
-    nome: "Yuri Tedesco Germano da Silva Santos Oliveira",
-    foto: "/public/yuri.jpg",
+    nome: "Yuri Tedesco Germano",
+    foto: "/public/yuri.png",
     descricao:
       "Co-Fundador do NEGES",
   },
   {
-    nome: "Ezequiel Chitortinha",
-    foto: "/public/ezequiel.jpg",
+    nome: "Ezequiel Chitolina",
+    foto: "/public/ezequiel.png",
     descricao:
       "Homossexual",
   },
   {
     nome: "Thiago Balbinot",
-    foto: "/public/thiago.jpg",
+    foto: "/public/thiago.png",
     descricao:
       "Membro do NEGES",
   },
@@ -116,9 +286,12 @@ function TeamCarousel() {
 
 export default function QuemSomos() {
   return (
-    <section className="quem_somos_section">
-
-      <div className="quem_somos">
+    <div className="app">
+      <Nav />
+      <Hero />
+      <PMV />
+      <section className="quem_somos_section">
+        <div className="quem_somos">
         <div className="card_qs">
           <img src="/security.png" alt="" />
           <div className="text">
@@ -145,7 +318,7 @@ export default function QuemSomos() {
       </div>
 
       <TeamCarousel />
-
-    </section>
+      </section>
+    </div>
   );
 }
