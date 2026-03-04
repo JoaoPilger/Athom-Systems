@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.square{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+.near{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 25px 0 30px 0;
+    gap: 40px;
+    width: 100%
+}
+.near div{
+    display: flex;
+    flex-direction: column;
+}
+
+.near > div{
+    gap: 20px;
+    width: 50%;
+}
+.info div{
+    align-items: start;
+    width: 100%;
+    color: #828282;
+}
+.info div input{
+    width: 100%;
+    background-color: transparent;
+    border-bottom: 1px #828282 solid;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
+}
+
+.divButton{
+    gap: 40px;
+    align-items: center;
+}
+
+.loginButton{
+    border-radius: 5px;
+    background-color: rgb(0, 105, 161);
+    width: 60%;
+    padding: 10px 20px;
+    color: #FFF;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.loginButton:hover{
+    background-color: rgb(0, 74, 114);
+    transform: scale(1.05);
+}
+
+.forgotButton{
+    background-color: transparent;
+    color: #828282;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+    font-size: 14px;
+}
+
+.forgotButton:hover{
+    transform: scale(1.05);
+}
+
+a{
+    color: black;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+    .square{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .near > div{
+        width: 70%;
+    }
+}
