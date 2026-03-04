@@ -1,5 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom';
+import Header from './components/header/header';
 import Produtos from './components/produtos/produtos'
 import Valores from './components/valores/valores' 
 import SobreNos from './components/sobre_nos/sobre_nos';
@@ -19,10 +20,13 @@ function Home() {
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/pages/quem_somos" element={<QuemSomos />} />
-    </Routes>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/pages/quem_somos" element={<QuemSomos />} />
+      </Routes>
+    </>
   )
 }
 
