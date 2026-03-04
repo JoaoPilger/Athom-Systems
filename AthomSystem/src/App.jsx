@@ -9,12 +9,12 @@ import Hero from './components/hero/hero';
 
 function Home() {
   return(
-    <>
+    <div className="home-page">
       <Hero/>
       <Valores/>
       <Produtos/>
       <SobreNos/>
-    </>
+    </div>
   )
 }
 

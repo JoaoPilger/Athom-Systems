@@ -42,6 +42,15 @@
   z-index: 0;
 }
 
+/* Na primeira página, fundo transparente para seguir o gradiente unificado */
+.home-page .products-section {
+  background: transparent;
+}
+.home-page .products-section::before,
+.home-page .products-section::after {
+  opacity: 0.4;
+}
+
 .products-canvas {
   position: absolute;
   inset: 0;
