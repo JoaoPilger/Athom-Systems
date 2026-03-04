@@ -5,7 +5,7 @@
 }
 
 .valores{
-    background-color: white;
+    background: transparent;
     display: flex;
     flex-direction: row;
     gap: 7%;

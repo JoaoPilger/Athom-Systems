@@ -1,5 +1,8 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom';
+import Header from './components/header/header';
+import Hero from './components/hero/hero'
+import Footer from './components/footer/footer';
 import Produtos from './components/produtos/produtos'
 import Valores from './components/valores/valores' 
 import SobreNos from './components/sobre_nos/sobre_nos';
@@ -9,11 +12,14 @@ import Cadastro from './pages/cadastro_login/cadastro';
 
 function Home() {
   return(
-    <>
+    <div className="home-page">
+      <Header/>
+      <Hero/>
       <Valores/>
       <Produtos/>
       <SobreNos/>
-    </>
+      <Footer/>
+    </div>
   )
 }
 

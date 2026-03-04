@@ -12,25 +12,30 @@
   --gray:   #d4d4d0;
   --gray-lt:#ebebea;
   --radius: 4px;
-  --shadow: 0 8px 40px rgba(0,0,0,0.08);
 }
 
 html { scroll-behavior: smooth; }
 
+/* FUNDO ÚNICO — definido no body, herdado por tudo */
 body {
   font-family: 'DM Sans', sans-serif;
-  background: var(--paper);
   color: var(--ink);
   line-height: 1.6;
+  background: var(--paper);
 }
 
+/* .app não define background — só estrutura */
 .app {
-  background: 
-    radial-gradient(ellipse 120% 60% at 50% 0%, rgba(42, 95, 196, 0.07) 0%, transparent 45%),
-    radial-gradient(ellipse 80% 50% at 20% 60%, rgba(42, 95, 196, 0.05) 0%, transparent 40%),
-    radial-gradient(ellipse 70% 50% at 85% 85%, rgba(42, 95, 196, 0.04) 0%, transparent 40%),
-    linear-gradient(180deg, #f5f4ef 0%, var(--paper) 25%, var(--paper) 75%, #f7f6f2 100%);
-  min-height: 100vh;
+  background: transparent !important;
+}
+
+/* Nenhuma seção tem cor de fundo própria */
+.hero,
+.pmv,
+.quem_somos_section,
+.quem_somos,
+.carousel_wrapper {
+  background: transparent !important;
 }
 
 /* ─── Nav ───────────────────────────────────────────────────────────────── */
@@ -41,12 +46,10 @@ body {
   justify-content: space-between;
   padding: 0.6rem 3rem;
   overflow: visible;
+  background: transparent;
 }
 
-.nav__logo {
-  display: block;
-  text-decoration: none;
-}
+.nav__logo { display: block; text-decoration: none; }
 
 .nav__logo img {
   height: clamp(110px, 14vw, 220px);
@@ -57,12 +60,7 @@ body {
   margin-bottom: -4.5rem;
 }
 
-.nav__links {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-}
+.nav__links { list-style: none; display: flex; align-items: center; gap: 2.5rem; }
 
 .nav__links a {
   text-decoration: none;
@@ -91,7 +89,6 @@ body {
   justify-content: center;
   padding-top: 8vh;
   overflow: hidden;
-  background: transparent;
 }
 
 .particles {
@@ -109,7 +106,6 @@ body {
   max-width: 680px;
   padding: 0 2rem;
   animation: fadeUp 0.9s ease both;
-  margin-top: 0;
 }
 
 .hero__title {
@@ -139,10 +135,7 @@ body {
   line-height: 1.75;
 }
 
-.hero__body strong {
-  color: var(--ink);
-  font-weight: 600;
-}
+.hero__body strong { color: var(--ink); font-weight: 600; }
 
 .hero__link {
   display: inline-block;
@@ -155,24 +148,17 @@ body {
   transition: border-color 0.2s, color 0.2s;
 }
 
-.hero__link:hover {
-  color: var(--blue-lt);
-  border-color: var(--blue-lt);
-}
+.hero__link:hover { color: var(--blue-lt); border-color: var(--blue-lt); }
 
-/* ─── PMV Section ───────────────────────────────────────────────────────── */
+/* ─── PMV ───────────────────────────────────────────────────────────────── */
 .pmv {
-  background: transparent;
   padding: 6rem 2rem 8rem;
   max-width: 1600px;
   margin: 0 auto;
   width: 100%;
 }
 
-.pmv__header {
-  text-align: center;
-  margin-bottom: 5rem;
-}
+.pmv__header { text-align: center; margin-bottom: 5rem; }
 
 .pmv__heading {
   font-family: 'Cormorant Garamond', serif;
@@ -191,12 +177,7 @@ body {
   line-height: 1.6;
 }
 
-/* Grid: alternating left/right pattern like the screenshot */
-.pmv__grid {
-  display: grid;
-  gap: 3rem 0;
-  max-width: 100%;
-}
+.pmv__grid { display: grid; gap: 3rem 0; }
 
 .pmv__card {
   display: grid;
@@ -207,15 +188,11 @@ body {
   transform: translateY(30px);
 }
 
-.pmv__card--visible {
-  animation: fadeUp 0.7s ease forwards;
-}
+.pmv__card--visible { animation: fadeUp 0.7s ease forwards; }
 
-/* Alternate: even cards flip image to right */
 .pmv__card:nth-child(even) { direction: rtl; }
 .pmv__card:nth-child(even) > * { direction: ltr; }
 
-/* Image placeholder with floating dots */
 .pmv__card-image {
   position: relative;
   background: var(--gray-lt);
@@ -224,10 +201,7 @@ body {
   overflow: hidden;
 }
 
-.pmv__card-dots {
-  position: absolute;
-  inset: -20px;
-}
+.pmv__card-dots { position: absolute; inset: -20px; }
 
 .pmv__dot {
   position: absolute;
@@ -239,7 +213,6 @@ body {
 .pmv__dot:nth-child(odd)  { animation-duration: 5s; }
 .pmv__dot:nth-child(3n)   { animation-duration: 7s; }
 
-/* Inner grey box like screenshot */
 .pmv__card-image::before {
   content: '';
   position: absolute;
@@ -247,9 +220,6 @@ body {
   background: var(--gray);
   border-radius: 2px;
 }
-
-/* Body text */
-.pmv__card-body {}
 
 .pmv__card-title {
   font-family: 'Cormorant Garamond', serif;
@@ -266,6 +236,96 @@ body {
   line-height: 1.8;
 }
 
+/* ─── Quem Somos ────────────────────────────────────────────────────────── */
+.quem_somos_section { position: relative; }
+
+.quem_somos {
+  display: flex;
+  flex-direction: row;
+  gap: 7%;
+  padding: 50px 10%;
+  align-items: center;
+  justify-content: center;
+}
+
+.card_qs {
+  color: var(--ink);
+  font-size: 17px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 18%;
+  border-radius: 10px;
+  padding: 40px;
+}
+
+.card_qs img { width: 60%; }
+
+/* ─── Carousel ──────────────────────────────────────────────────────────── */
+.carousel_wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1rem 5rem;
+  gap: 2.5rem;
+}
+
+.carousel_titulo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 2.7rem);
+  font-weight: 600;
+  text-align: center;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.carousel_stage {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel_card {
+  position: absolute;
+  width: 320px;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(212,212,208,0.5);
+  border-radius: 2px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.card_foto { width: 100%; aspect-ratio: 1/1; overflow: hidden; }
+
+.card_foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.card_carousel_body {
+  padding: 1.4rem 1.6rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.card_member_nome { font-weight: 400; font-size: 1.35rem; margin: 0; letter-spacing: 0.01em; }
+
+.card_member_descricao { font-size: 0.82rem; font-weight: 300; line-height: 1.65; color: #5c5a56; margin: 0; }
+
 /* ─── Animations ────────────────────────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
@@ -278,193 +338,66 @@ body {
 }
 
 /* ─── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .nav { padding: 0.6rem 2rem; }
+  .nav__logo img { height: clamp(80px, 12vw, 140px); margin-bottom: -3.2rem; }
+  .nav__links { gap: 1.8rem; }
+  .nav__links a { font-size: 0.82rem; }
+  .hero { padding-top: 6vh; }
+  .hero__content { padding: 0 1.5rem; }
+  .hero__title { font-size: clamp(2.6rem, 6vw, 5rem); }
+  .pmv { padding: 5rem 1.5rem 6rem; }
+  .pmv__card { gap: 3rem; }
+}
+
 @media (max-width: 768px) {
-  .nav { padding: 1rem 1.5rem; }
-  .nav__links { gap: 1.5rem; }
-  .pmv { padding: 4rem 1.5rem 6rem; }
-
-  .pmv__card,
-  .pmv__card:nth-child(even) {
-    grid-template-columns: 1fr;
-    direction: ltr;
-  }
-
+  .nav { padding: 0.5rem 1.25rem; flex-wrap: wrap; gap: 0.5rem; }
+  .nav__logo img { height: clamp(60px, 18vw, 100px); margin-bottom: -2.2rem; }
+  .nav__links { gap: 1.25rem; flex-wrap: wrap; justify-content: flex-end; }
+  .nav__links a { font-size: 0.8rem; }
+  .hero { padding-top: 5vh; align-items: flex-start; }
+  .hero__content { max-width: 100%; padding: 0 1.25rem; }
+  .hero__title { font-size: clamp(2.2rem, 8vw, 3.5rem); }
+  .hero__body { font-size: 0.95rem; margin-bottom: 2rem; }
+  .pmv { padding: 4rem 1.25rem 5rem; }
+  .pmv__header { margin-bottom: 3rem; }
+  .pmv__heading { font-size: clamp(1.9rem, 5vw, 2.8rem); }
+  .pmv__subheading { font-size: 1rem; }
+  .pmv__card, .pmv__card:nth-child(even) { grid-template-columns: 1fr; gap: 2rem; direction: ltr; }
   .pmv__card-image { aspect-ratio: 16/9; }
-}
-
-.quem_somos{
-    background: transparent;
-    display: flex;
-    flex-direction: row;
-    gap: 7%;
-    padding: 50px 10%;
-    align-items: center;
-    justify-content: center;
-    font-size: 1vw;
-}
-
-/* SEÇÃO CARDS VALORES DA EMPRESA */
-.card_qs{
-    color: black;
-    font-size: 17px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    width: 18%;
-    height: 45%;
-    border-radius: 10px;
-    padding: 40px;
-}
-.card_qs img{
-        width: 60%;
-    }
-
-/* SEÇÃO MEMBROS DA EQUIPE */
-
-.carousel_wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 4rem 1rem 2rem;
-    gap: 2.5rem;
-}   
-
-.carousel_titulo {
-    font-size: 2.7rem;
-    text-align: center;
-}
-
-.carousel_stage {
-    position: relative;
-    width: 100%;
-    max-width: 780px;
-    height: 420px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.carousel_card {
-    position: absolute;
-    width: 320px;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(8px);
-    border-radius: 2px;
-    overflow: hidden; 
-    cursor: pointer;
-    display: flex;
-    flex-direction: column; 
-}
-
-.card_foto {
-    width: 100%;
-    aspect-ratio: 1 / 1;   
-    overflow: hidden;
-}
-
-.card_foto img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top; 
-  display: block;
-}
-
-.card_carousel_body {
-  padding: 1.4rem 1.6rem 1.8rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.card_member_nome {
-  font-weight: 400;
-  font-size: 1.35rem;
-  margin: 0;
-  letter-spacing: 0.01em;
-}
-
-.card_member_descricao {
-  font-size: 0.82rem;
-  font-weight: 300;
-  line-height: 1.65;
-  color: #5c5a56;
-  margin: 0;
-}
-
-@media (max-width: 768px) {
-    .quem_somos{
-        flex-direction: row;
-        gap: 20px;
-        padding: 20px;
-    }
-    .card_qs{
-        width: 80%;
-        height: auto;
-        padding: 20px;
-        font-size: 17px;
-    }
-    .card_qs img{
-        width: 40%;
-    }
-
-    .carousel_stage {
-        height: 480px;
-    }
-
-    .carousel_card {
-        width: min(280px, 75vw);
-    }
-
-    .card_member_nome {
-        font-size: 1.15rem;
-    }
+  .pmv__card-title { font-size: clamp(1.6rem, 4vw, 2.2rem); }
+  .pmv__card-text { font-size: 1rem; }
+  .quem_somos { flex-direction: column; gap: 2rem; padding: 2.5rem 1.25rem; }
+  .card_qs { width: 100%; max-width: 400px; padding: 24px 20px; font-size: 1rem; }
+  .card_qs img { width: 50%; max-width: 80px; }
+  .carousel_wrapper { padding: 3rem 1rem 2rem; gap: 2rem; }
+  .carousel_titulo { font-size: clamp(1.75rem, 5vw, 2.2rem); }
+  .carousel_stage { height: 420px; }
+  .carousel_card { width: min(280px, 80vw); }
+  .card_member_nome { font-size: 1.15rem; }
 }
 
 @media (max-width: 480px) {
-    .quem_somos{
-        padding: 10px;
-    }
-    .card_qs{
-        padding: 10px;
-        font-size: 10px;
-    }
-    .card_qs img{
-        width: 30%;
-    }
-    .carousel_wrapper {
-        padding: 2.5rem 0 1.5rem;
-        gap: 1.5rem;
-    }
-
-    .carousel_titulo {
-        font-size: 1.5rem;
-    }
-
-    .carousel_stage {
-        height: 420px;
-    }
-
-    .carousel_card {
-        width: min(240px, 70vw);
-    }
-    .carousel_card[style*="translateX(-96%)"],
-    .carousel_card[style*="translateX(96%)"] {
-        display: none;
-    }
-
-    .card_carousel_body {
-        padding: 1rem 1.2rem 1.4rem;
-    }
-
-    .card_member_nome {
-        font-size: 1rem;
-    }
-
-    .card_member_descricao {
-        font-size: 0.78rem;
-    }
+  .nav { padding: 0.5rem 1rem; }
+  .nav__logo img { height: clamp(48px, 22vw, 72px); margin-bottom: -1.5rem; }
+  .nav__links { gap: 1rem; }
+  .nav__links a { font-size: 0.75rem; }
+  .hero { padding-top: 4vh; }
+  .hero__content { padding: 0 1rem; }
+  .hero__title { font-size: clamp(1.8rem, 9vw, 2.5rem); }
+  .hero__subtitle { font-size: 0.7rem; letter-spacing: 0.2em; }
+  .hero__body { font-size: 0.88rem; margin-bottom: 1.5rem; }
+  .pmv { padding: 3rem 1rem 4rem; }
+  .pmv__heading { font-size: clamp(1.6rem, 6vw, 2rem); }
+  .quem_somos { padding: 2rem 1rem; gap: 1.5rem; }
+  .card_qs { padding: 20px 16px; font-size: 0.95rem; }
+  .card_qs img { width: 45%; max-width: 64px; }
+  .carousel_wrapper { padding: 2.5rem 0.75rem 1.5rem; gap: 1.5rem; }
+  .carousel_titulo { font-size: clamp(1.35rem, 5.5vw, 1.6rem); }
+  .carousel_stage { height: 380px; }
+  .carousel_card { width: min(260px, 88vw); }
+  .carousel_card[style*="translateX(-96%)"], .carousel_card[style*="translateX(96%)"] { display: none; }
+  .card_carousel_body { padding: 1rem 1.2rem 1.2rem; }
+  .card_member_nome { font-size: 1rem; }
+  .card_member_descricao { font-size: 0.78rem; }
 }

@@ -287,7 +287,6 @@ function TeamCarousel() {
 export default function QuemSomos() {
   return (
     <div className="app">
-      <Nav />
       <Hero />
       <PMV />
       <section className="quem_somos_section">

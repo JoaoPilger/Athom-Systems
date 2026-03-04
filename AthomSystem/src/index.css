@@ -4,3 +4,10 @@
   border: 0;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
+
+/* Fundo unificado da primeira página (Hero + Valores + Produtos + Sobre nós) */
+.home-page {
+  background: #ffffff;
+  min-height: 100vh;
+}
+
