@@ -25,7 +25,7 @@ function Footer() {
             <h4 className="footer-title">Athom System</h4>
             <Link to="/#produtos">Produtos</Link>
             <Link to="/pages/quem_somos">Quem Somos</Link>
-            <a href="#login">Log In</a>
+            <a href="/login">Log In</a>
           </div>
           <div className="footer-column">
             <h4 className="footer-title">Social</h4>

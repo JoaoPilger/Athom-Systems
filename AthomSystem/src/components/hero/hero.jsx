@@ -18,10 +18,7 @@ function Hero() {
 
           <button className="hero-btn">Saiba mais</button>
         </div>
-
-        <div className="imagemhero">
-          <img src="/imagemhero.png" alt="Dashboard" />
-        </div>
+        <img src="/imagemhero.png" alt="Dashboard" className="imagemhero"/>
 
       </div>
     </section>

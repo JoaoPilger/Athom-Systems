@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
+import Header from '../../components/header/header'
+import Footer from '../../components/footer/footer'
 import './quem_somos.css';
 
 const Nav = () => {
@@ -156,6 +158,7 @@ const PMV = () => {
           </article>
         ))}
       </div>
+      
     </section>
   );
 };
@@ -287,6 +290,7 @@ function TeamCarousel() {
 export default function QuemSomos() {
   return (
     <div className="app">
+      <Header></Header>
       <Hero />
       <PMV />
       <section className="quem_somos_section">
@@ -318,6 +322,7 @@ export default function QuemSomos() {
 
       <TeamCarousel />
       </section>
+      <Footer></Footer>
     </div>
   );
 }
