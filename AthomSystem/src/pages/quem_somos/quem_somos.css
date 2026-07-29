@@ -16,14 +16,6 @@
 
 html { scroll-behavior: smooth; }
 
-/* FUNDO ÚNICO — definido no body, herdado por tudo */
-body {
-  font-family: 'DM Sans', sans-serif;
-  color: var(--ink);
-  line-height: 1.6;
-  background: var(--paper);
-}
-
 /* .app não define background — só estrutura */
 .app {
   background: transparent !important;
